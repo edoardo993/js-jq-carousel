@@ -27,4 +27,29 @@ $(document).ready(function() {
             $('img.active').removeClass('active').prev().addClass('active');
         }
     });
+    $(document).on("keydown", keyboardSelected);
+    function keyboardSelected(t){
+        if(t.keyCode === 37){
+            $('i.active').removeClass('active').prev().addClass('active');
+            if($('img.active').hasClass('first')===true){
+                $('img.first').removeClass('active');
+                $('img.last').addClass('active');
+                $('i.first').removeClass('active');
+                $('i.last').addClass('active');
+            }else{
+                $('img.active').removeClass('active').prev().addClass('active');
+            }
+        }
+        if(t.keyCode === 39){
+            $('i.active').removeClass('active').next().addClass('active');
+            if($('img.active').hasClass('last')===true){
+                $('img.last').removeClass('active');
+                $('img.first').addClass('active');
+                $('i.last').removeClass('active');
+                $('i.first').addClass('active');
+            }else{
+                $('img.active').removeClass('active').next().addClass('active');
+            }
+        }
+    };
 });
